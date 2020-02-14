@@ -4,9 +4,9 @@ def get_codes(strings_file)
 
     # split into 2 arrays - 1 for .mp4s and the other for .srt
   strings_data.each do |string|
-    if string.split(".").last = "mp4"
+    if string.split(".").last == "mp4"
       puts "mp4"
-    else string.split(".").last = "srt"
+    else 
       puts "srt"
     end
   end
