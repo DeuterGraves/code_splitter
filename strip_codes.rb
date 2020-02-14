@@ -3,7 +3,7 @@ def get_codes(strings_file)
   mp4s = build_array(strings_data, "mp4")
   srts = build_array(strings_data, "srt")
   # compare arrays - keep the mp4 items that don't match .srt items
-  diff = mp4s - srts
+  orphan_mp4s = mp4s - srts
   # get the codes from the orphan mp4s
 end
 
@@ -12,7 +12,7 @@ def build_array(strings_data, extension)
 
   strings_data.each do |string|
     if string.split(".").last == extension
-      array << string
+      array << string.chomp(".#{extension}")
     end
   end 
   array 
