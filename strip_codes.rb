@@ -1,10 +1,9 @@
 def get_codes(strings_file)
   strings_data = File.read(strings_file).split
-  # strings_data
-    # split into 2 arrays - 1 for .mp4s and the other for .srt
-    mp4s = build_array(strings_data, "mp4")
-    srts = build_array(strings_data, "srt")
+  mp4s = build_array(strings_data, "mp4")
+  srts = build_array(strings_data, "srt")
   # compare arrays - keep the mp4 items that don't match .srt items
+  diff = mp4s - srts
   # get the codes from the orphan mp4s
 end
 
