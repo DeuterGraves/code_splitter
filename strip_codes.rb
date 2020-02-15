@@ -1,6 +1,6 @@
 # pass in the extensions - more versatile
-def get_orphan_codes(strings_file, position, filename)
-  strings_data = File.read(strings_file).split
+def get_orphan_codes(input_file, position, output_filename)
+  strings_data = File.read(input_file).split
 
   mp4s = build_array(strings_data, "mp4")
   srts = build_array(strings_data, "srt")
@@ -9,7 +9,7 @@ def get_orphan_codes(strings_file, position, filename)
 
   codes = get_codes(orphan_mp4s, position).uniq
 
-  save_to_file(codes, filename)
+  save_to_file(codes, output_filename)
 end
 
 
@@ -34,6 +34,6 @@ def get_codes(orphan_mp4s, position)
   codes
 end
 
-def save_to_file(codes, filename)
-  File.open("#{filename}.txt", 'w') {|file| file.puts codes }
+def save_to_file(codes, output_filename)
+  File.open("#{output_filename}.txt", 'w') {|file| file.puts codes }
 end
