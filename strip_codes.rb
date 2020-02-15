@@ -1,3 +1,4 @@
+# pass in the extensions - more versatile
 def get_orphan_codes(strings_file)
   strings_data = File.read(strings_file).split
 
@@ -22,7 +23,7 @@ def build_array(strings_data, extension)
   array 
 end
 
-
+# pass in the position to pull from the string and the split character - more versatile
 def get_codes(orphan_mp4s)
   codes = []
 
