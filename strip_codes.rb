@@ -6,7 +6,8 @@ def get_orphan_codes(strings_file)
 
   orphan_mp4s = mp4s - srts
 
-  get_codes(orphan_mp4s)
+  get_codes(orphan_mp4s).uniq
+
 end
 
 
