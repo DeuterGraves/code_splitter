@@ -11,5 +11,11 @@ I have a list of video files, and most of them have companion subtitle files, bu
 5. If you pass in an exisiting file name as your output file - the output file will be overwritten with the new data. 
 
 ## Next up/Ideas for changes and improvements:
+- second script to update list of needed codes comparing new files to the list of files needed and removing them
+- Some files end up duplicated because the file names are ever so slightly different
+  - rather than comparing file names - it should probably compare codes
+  - second script to re-name the video files to match the subtitle files.
+    - should have y/n before changing the file name
+- need to do this properly with classes and make this a proper app I guess. 
 - Could also make the position input an array - allowing a user to grab a series of items from the array that results from splitting the string on underscores.
 - Currently the file names split on an underscore, it might be interesting/wise/useful to make the split character(s) a variable.
