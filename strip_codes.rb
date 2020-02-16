@@ -5,9 +5,13 @@ def get_orphan_codes(input_file, output_filename)
   mp4s = build_array(strings_data, "mp4")
   srts = build_array(strings_data, "srt")
 
-  orphan_mp4s = mp4s - srts
+  # build arrays of the codes to compare below
+  mp4_codes = get_codes(mp4s)
+  srt_codes = get_codes(srts)
 
-  codes = get_codes(orphan_mp4s).uniq
+  orphan_codes = mp4_codes - srt_codes
+
+  codes = orphan_codes.uniq
 
   save_to_file(codes, output_filename)
 end
@@ -24,11 +28,12 @@ def build_array(strings_data, extension)
   array 
 end
 
-def get_codes(orphan_mp4s)
+
+def get_codes(filenames)
   codes = []
 
-  orphan_mp4s.each do |mp4| 
-    code = mp4.split("_")[-2]
+  filenames.each do |filename| 
+    code = filename.split("_")[-2]
     codes << code
   end
   codes
