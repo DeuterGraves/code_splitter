@@ -5,7 +5,6 @@ def get_orphan_codes(input_file, output_filename)
   mp4s = build_array(strings_data, "mp4")
   srts = build_array(strings_data, "srt")
 
-  # build arrays of the codes to compare below
   mp4_codes = get_codes(mp4s)
   srt_codes = get_codes(srts)
 
@@ -44,7 +43,6 @@ def save_to_file(codes, output_filename)
 end
 
 
-# take output list, get an input file list compare the codes on each and remove codes that have been downloaded
 def update_code_list(codes_file, new_files_list, output_filename)
   requested_codes = File.read(codes_file).split
   new_files = File.read(new_files_list).split

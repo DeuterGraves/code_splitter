@@ -16,7 +16,6 @@ I have a list of video files, and most of them have companion subtitle files, bu
 
 ## Next up/Ideas for changes and improvements:
 - Some files end up duplicated because the file names are ever so slightly different
-  - rather than comparing file names - it should probably compare codes
   - second script to re-name the video files to match the subtitle files.
     - should have y/n before changing the file name
 - need to do this properly with classes and make this a proper app I guess. 
