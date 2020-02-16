@@ -40,13 +40,15 @@ end
 
 
 # take output list, get an input file list compare the codes on each and remove codes that have been downloaded
-def update_code_list(codes_file, new_files_list)
+def update_code_list(codes_file, new_files_list, output_filename)
   requested_codes = File.read(codes_file).split
   new_files = File.read(new_files_list).split
 
   new_codes = build_codes_array(new_files)
 
   updated_codes = requested_codes - new_codes
+
+  save_to_file(updated_codes, output_filename)
 end
 
 def build_codes_array(strings_data)
