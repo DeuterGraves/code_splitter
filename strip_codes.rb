@@ -44,16 +44,20 @@ def update_code_list(codes_file, new_files_list)
   requested_codes = File.read(codes_file).split
   new_files = File.read(new_files_list).split
 
-  #trim new_files down to just the codes - this should be split out.
+  new_codes = build_codes_array(new_files)
+
+  updated_codes = requested_codes - new_codes
+end
+
+def build_codes_array(strings_data)
   new_codes = []
-  new_files.each do |file|
+
+  strings_data.each do |file|
     new_code = file.split("_")[-2]
     new_codes << new_code
   end
 
-  # new_codes
-
-  updated_codes = requested_codes - new_codes
-
+  new_codes
 end
+
 
