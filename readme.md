@@ -3,9 +3,9 @@
 ## Background:
 I have a list of video files, and most of them have companion subtitle files, but some are missing and I wanted a list of the missing ones, then I wanted to extract just a portion of the file name of the files shown not to have a match... then I thought 'hrm, would be useful to output to a text file...' and now I'm thinking, I'm at a decent stopping point. 
 
-get_orphan_codes compares the list of MP4 files to the list of subtitle files and creates a list of MP4s that are missing subtitles.
+`get_orphan_codes` compares the list of MP4 files to the list of subtitle files and creates a list of MP4s that are missing subtitles.
 
-update_code_list compares a list of codes from newly aquired subtitle files to the orphaned list previously created to remove files that are no longer missing
+`update_code_list` compares a list of codes from newly aquired subtitle files to the orphaned list previously created to remove files that are no longer missing
 
 ## Notes for me to remember how to use this down the road. 
 1. Have a file with a list of the files in it, they should each be on their own line, no additional punctuation needed.
