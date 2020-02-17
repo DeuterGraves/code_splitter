@@ -15,6 +15,7 @@ I have a list of video files, and most of them have companion subtitle files, bu
 5. If you pass in an exisiting file name as your output file - the output file will be overwritten with the new data. 
 
 ## Next up/Ideas for changes and improvements:
+- improve formatting on the file that's created
 - Some files end up duplicated because the file names are ever so slightly different
   - second script to re-name the video files to match the subtitle files.
     - should have y/n before changing the file name
