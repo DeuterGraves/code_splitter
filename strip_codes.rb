@@ -39,7 +39,10 @@ def get_codes(filenames)
 end
 
 def save_to_file(codes, output_filename)
-  File.open("#{output_filename}.txt", 'w') {|file| file.puts codes }
+  binding.pry
+  output = File.open("#{output_filename}.txt", 'w')
+  output << codes
+  output.close
 end
 
 
@@ -65,4 +68,6 @@ def build_codes_array(strings_data)
   new_codes
 end
 
+# rename file:
+# File.rename("../rename_me_1.txb", "../rename_me_01.txb")
 
