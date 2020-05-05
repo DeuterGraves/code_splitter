@@ -15,6 +15,43 @@ def get_orphan_codes(input_file, output_filename)
   save_to_file(codes, output_filename)
 end
 
+def update_code_list(codes_file, new_files_list, output_filename)
+  requested_codes = File.read(codes_file).split
+  new_files = File.read(new_files_list).split
+
+  new_codes = build_codes_array(new_files)
+
+  updated_codes = requested_codes - new_codes
+
+  save_to_file(updated_codes, output_filename)
+end
+
+def list_mismatched_file_names(input_file, output_filename)
+  files_strings = File.read(input_file).split
+  mp4s = build_array(files_strings, "mp4")
+  srts = build_array(files_strings, "srt")
+  mp4s_hash = {}
+  srts_hash = {}
+
+  mp4s.each do |mp4|
+    code = mp4.split("_")[-2]
+    mp4s_hash[code] = mp4
+  end
+
+  srts.each do |srt|
+    code = srt.split("_")[-2]
+    srts_hash[code] = srt
+  end
+
+  srts_hash.each_pair do |k, v|
+    next if mp4s_hash[k] == value || mp4s_hash[k].nil?
+    puts "#{k}: SRT file name is #{v}, MP4 filename is #{mp4s_hash[k]}"
+    # rather than puts, save output.
+  end 
+end
+
+
+private
 
 def build_array(strings_data, extension)
   array = []
@@ -27,7 +64,6 @@ def build_array(strings_data, extension)
   array 
 end
 
-
 def get_codes(filenames)
   codes = []
 
@@ -39,22 +75,10 @@ def get_codes(filenames)
 end
 
 def save_to_file(codes, output_filename)
-  binding.pry
+  # binding.pry
   output = File.open("#{output_filename}.txt", 'w')
   output << codes
   output.close
-end
-
-
-def update_code_list(codes_file, new_files_list, output_filename)
-  requested_codes = File.read(codes_file).split
-  new_files = File.read(new_files_list).split
-
-  new_codes = build_codes_array(new_files)
-
-  updated_codes = requested_codes - new_codes
-
-  save_to_file(updated_codes, output_filename)
 end
 
 def build_codes_array(strings_data)
