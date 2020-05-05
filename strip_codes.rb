@@ -44,10 +44,10 @@ def list_mismatched_file_names(input_file, output_filename)
   end
 
   srts_hash.each_pair do |k, v|
-    next if mp4s_hash[k] == value || mp4s_hash[k].nil?
-    puts "#{k}: SRT file name is #{v}, MP4 filename is #{mp4s_hash[k]}"
+    next if mp4s_hash[k] == v || mp4s_hash[k].nil?
+    puts "#{k}:\nSRT filename is #{v}\nMP4 filename is #{mp4s_hash[k]}"
     # rather than puts, save output.
-  end 
+  end;nil
 end
 
 
