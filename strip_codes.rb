@@ -50,6 +50,14 @@ def list_mismatched_file_names(input_file, output_filename)
   end;nil
 end
 
+def check_for_duplicates(input_file, extension, output_filename)
+  files_strings = File.read(input_file).split
+  file_array = build_array(files_strings, extension)
+  codes = get_codes(file_array)
+  uniq?(codes)
+  #currently just returns true/false if there are duplicate files - should probably output a list of the duplicates instead.
+end
+
 
 private
 
@@ -90,6 +98,10 @@ def build_codes_array(strings_data)
   end
 
   new_codes
+end
+
+def uniq?(array)
+  array.length == array.uniq.length
 end
 
 # rename file:
