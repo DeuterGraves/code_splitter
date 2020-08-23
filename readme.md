@@ -14,6 +14,9 @@ I have a list of video files, and most of them have companion subtitle files, bu
 4. Position refers to where in the array created when the string is split on underscores the string you want is located. 
 5. If you pass in an exisiting filename as your output file - the output file will be overwritten with the new data. 
 
+To run methods:
+`ruby -r "./strip_codes" -e "StripCodes.get_orphan_codes '../230820_azul.txt', '../230820_azul_orphans'"`
+
 ## Next up/Ideas for changes and improvements:
 - improve formatting on the file that's created
 - Some files end up duplicated because the filenames are ever so slightly different

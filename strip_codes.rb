@@ -1,7 +1,7 @@
   class StripCodes
   # pass in the extensions - more versatile
 
-  def get_orphan_codes(input_file, output_filename)
+  def self.get_orphan_codes(input_file, output_filename)
     strings_data = File.read(input_file).split
 
     mp4s = build_array(strings_data, "mp4")
@@ -17,7 +17,7 @@
     save_to_file(codes, output_filename)
   end
 
-  def update_code_list(codes_file, new_files_list, output_filename)
+  def self.update_code_list(codes_file, new_files_list, output_filename)
     requested_codes = File.read(codes_file).split
     new_files = File.read(new_files_list).split
 
@@ -28,7 +28,7 @@
     save_to_file(updated_codes, output_filename)
   end
 
-  def list_mismatched_file_names(input_file, output_filename)
+  def self.list_mismatched_file_names(input_file, output_filename)
     files_strings = File.read(input_file).split
     mp4s = build_array(files_strings, "mp4")
     srts = build_array(files_strings, "srt")
@@ -52,7 +52,7 @@
     end;nil
   end
 
-  def check_for_duplicates(input_file, extension, output_filename)
+  def self.check_for_duplicates(input_file, extension, output_filename)
     files_strings = File.read(input_file).split
     file_array = build_array(files_strings, extension)
     codes = get_codes(file_array)
@@ -65,7 +65,7 @@
 
   private
 
-  def build_array(strings_data, extension)
+  def self.build_array(strings_data, extension)
     array = []
 
     strings_data.each do |string|
@@ -76,7 +76,7 @@
     array 
   end
 
-  def get_codes(filenames)
+  def self.get_codes(filenames)
     codes = []
 
     filenames.each do |filename| 
@@ -86,14 +86,14 @@
     codes
   end
 
-  def save_to_file(codes, output_filename)
+  def self.save_to_file(codes, output_filename)
     # binding.pry
     output = File.open("#{output_filename}.txt", 'w')
     output << codes
     output.close
   end
 
-  def build_codes_array(strings_data)
+  def self.build_codes_array(strings_data)
     new_codes = []
 
     strings_data.each do |file|
@@ -104,7 +104,7 @@
     new_codes
   end
 
-  def uniq?(array)
+  def self.uniq?(array)
     array.length == array.uniq.length
   end
 
