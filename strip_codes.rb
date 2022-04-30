@@ -52,12 +52,23 @@
     end;nil
   end
 
-  def self.check_for_duplicates(input_file, extension, output_filename)
+  def self.check_for_duplicates(input_file, extension)
+    files_strings = File.read(input_file).split
+    file_array = build_array(files_strings, extension)
+    
+    codes = get_codes(file_array)
+
+    uniq?(codes)
+  end
+
+  def self.get_duplicate_codes(input_file, extension, output_filename)
     files_strings = File.read(input_file).split
     file_array = build_array(files_strings, extension)
     codes = get_codes(file_array)
-    uniq?(codes)
-    #currently just returns true/false if there are duplicate files - should probably output a list of the duplicates instead.
+
+    duplicates = codes.group_by{ |e| e }.select { |k, v| v.size > 1 }.map(&:first)
+
+    save_to_file(duplicates, output_filename)
   end
 
   # input_file, output_filename, codes_file, new_files_list, extension = ARGV
