@@ -17,6 +17,9 @@ I have a list of video files, and most of them have companion subtitle files, bu
 To run methods:
 `ruby -r "./strip_codes" -e "StripCodes.get_orphan_codes '../230820_azul.txt', '../230820_azul_orphans'"`
 
+## Pro Tips
+- Clearing out the folder structure in a `file_list.txt` file in 1 sweep: `^.*\\` that found multiple layers of folders i.e. `\folder 1\folder 2\` and then just replace with blank and done. The script seems to throw out list items from the files that aren't relevant file names (I'm writing this ages after writing the original script - hence "seems").
+
 ## Next up/Ideas for changes and improvements:
 - improve formatting on the file that's created
 - Some files end up duplicated because the filenames are ever so slightly different
